@@ -15,6 +15,14 @@ module.exports = {
   getHabitation: function(e){
     var habitacion = admin.firestore().collection('Habitacion');
     return habitacion.doc(e).get();
+  },
+  setHabitation: function(e,body){
+    var habitacion = admin.firestore().collection('Habitacion');
+    return habitacion.doc(e).set(body);
+  },
+  updateHabitation: function(e,body){
+    var habitacion = admin.firestore().collection('Habitacion');
+    return habitacion.doc(e).update(body);
   }
   // getModule: function(e,m){
   //   var habitacion = admin.firestore().collection('Habitacion');
