@@ -13,14 +13,14 @@ router.get('/:idcon',function(req, res, next) {
         res.jsonp({code : 1,data : doc.data()});
       }else{
         res.jsonp({code : 0,data : "No existe el codigo proporcionado"});
-      }      
+      }
     })
     .catch(err=>{
       res.jsonp(err);
     });
 
 });
-router.post('/:idcon',function(req, res, next) {
+router.post('/:idcon',function(req, res, next){
     var response = {
       code : 1,
       value : ""
@@ -67,16 +67,11 @@ router.post('/:idcon',function(req, res, next) {
       response.value = err;
       res.jsonp(response);
     });
-
 });
 router.get('/:idcon/:component/:get',function(req, res, next) {
   ServerFirebase.getHabitation(req.params.idcon)
   .then(doc=>{
-    if(req.params.get=="GET" || req.params.get == "get" ){
-      res.jsonp(doc.data()[req.params.component]);
-    }else{
-      res.jsonp(doc.data()[req.params.component][req.params.get]);
-    }
+      res.jsonp({ data : doc.data()[req.params.component][req.params.get]});
   })
   .catch(err=>{
     res.jsonp(err);
