@@ -17,7 +17,7 @@ class HelloMessage extends React.Component {
 
       return(
       <DefaultLayout config={this.props.config}  title={"Mi titulo"}>
-          <div>Hello {this.props.name}</div>
+          <div id="app">Hello {this.props.name}</div>
       </DefaultLayout>
       );
 
