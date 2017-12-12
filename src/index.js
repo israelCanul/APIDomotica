@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import _ from 'lodash';
-
+import Item from './item_controls';
 const firebase = require("firebase");
 // Required for side-effects
 require("firebase/firestore");
@@ -24,9 +24,9 @@ class Home extends Component{
   constructor(props){
     super(props);
     this.state = {
-
     }
     this.renderRooms = this.renderRooms.bind(this);
+
   }
   componentWillMount(){
     let that = this;
@@ -45,19 +45,7 @@ class Home extends Component{
   componentDidMount(){
 
   }
-  changeLever(room,id,estado,e){
-    // console.log(room);
-    // console.log(id);
-    // console.log(estado);
-    room.value[id].Estado = estado;
-    db.collection("Habitacion").doc(room.id).update(room.value)
-    .then(function() {
-        console.log("Document successfully written!");
-    })
-    .catch(function(error) {
-        console.error("Error writing document: ", error);
-    });
-  }
+
   renderRooms(){
     let that = this;
     if(this.state.data != null){
@@ -69,29 +57,7 @@ class Home extends Component{
         items.map((child,id)=>{
           //console.log(child);
           if(typeof child === 'object'){
-            controls.push(
-              <div className="row">
-                <div className="col s2 m1"><i className={`material-icons ${child.Activo?child.Estado?"green-text":"red-text":"grey-text"}`} >flash_on</i></div>
-                <div className="col s10 m5 black-text">
-                  {child.id }
-                </div>
-                <div className="col s10 m5 offset-s2 blue-grey-text">
-                  {child.Descripcion}
-                </div>
-                <div className="col s12 m1 ">
-
-
-                      {child.Activo?
-                        <a onClick={this.changeLever.bind(that,item,child.id,!child.Estado)} className="btn btn-floating pulse"><i className="material-icons">power_settings_new</i></a>
-                        :
-                        <a  className="btn btn-floating grey"><i className="material-icons">power_settings_new</i></a>
-                      }
-
-
-
-                </div>
-              </div>
-            );
+            controls.push(<Item fi={db} item={item} child={child} id={id} />);
           }
         });
         return (
@@ -130,5 +96,7 @@ class Home extends Component{
     );
   }
 }
+
+
 
 ReactDOM.render(<Home />, document.getElementById('app'));
