@@ -58,7 +58,7 @@ export default () => ({
     }),
     commonsPlugin],
   devServer: {// uso del server
-      contentBase: './build',
+      contentBase: './public',
       hot: false,
     },
 });

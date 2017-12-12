@@ -71,7 +71,7 @@ router.post('/:idcon',function(req, res, next){
 router.get('/:idcon/:component/:get',function(req, res, next) {
   ServerFirebase.getHabitation(req.params.idcon)
   .then(doc=>{
-      res.jsonp({ data : doc.data()[req.params.component][req.params.get]});
+      res.jsonp({code : 1,get :req.params.get, data : doc.data()[req.params.component][req.params.get]});
   })
   .catch(err=>{
     res.jsonp(err);

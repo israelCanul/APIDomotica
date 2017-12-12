@@ -1,4 +1,31 @@
 body {
   padding: 10px;
-  
+
+}
+.cont{
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.collapsible-body {
+    display: none;
+    border-bottom: 1px solid #ddd;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0rem !important;
+}
+.card .card-reveal {
+    padding: 5px !important;
+    padding-left:10px; 
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    overflow-y: auto;
+    left: 0;
+    top: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
 }
