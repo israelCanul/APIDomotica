@@ -18,7 +18,7 @@ export default () => ({
     index :path.join(__dirname, 'src/index.js')
   },
   output: {// archivos de salida
-    path: path.join(__dirname,'/build'),
+    path: path.join(__dirname,'/public'),
     filename: 'js/[name].js',
   },
   module: {// declaracion de modulos
